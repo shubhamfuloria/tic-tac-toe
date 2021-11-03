@@ -49,14 +49,18 @@ Game.prototype.move = function (cellId) {
     let row = Number(cellId[0]);
     let col = Number(cellId[1]);
 
-    let sign = this.currTurnId === 0 ? 'X' : 'O'
-    if (board[row][col] === null) { //should be a valid move
-        board[row][col] = sign;
-        if (this.ifWon()) {
-            //currPlayer has won
-            console.log(this.getCurrentPlayer().name + " has won the match :)")
+    if (this.ifWon() === false ) {
+
+        let sign = this.currTurnId === 0 ? 'X' : 'O'
+        if (board[row][col] === null) { //should be a valid move
+            board[row][col] = sign;
+            if (this.ifWon()) {
+                //currPlayer has won
+                console.log(this.getCurrentPlayer().name + " has won the match :)")
+            }
+            currGame.nextTurn();
+            renderBoard();
         }
-        currGame.nextTurn();
     }
 }
 
@@ -100,18 +104,24 @@ const player1Input = document.getElementById('player-1')
 const player2Input = document.getElementById('player-2')
 const cells = document.querySelectorAll('.cell');
 
+initialize()
 
 function initialize() {
+    board = [
+        [null, null, null],
+        [null, null, null],
+        [null, null, null]
+    ]
     const player1 = player1Input.value;
     const player2 = player2Input.value;
-    
+
     //initializing players
     p1 = new Player(player1, 'X', 0);
     p2 = new Player(player2, 'O', 1);
 
     currGame = new Game(p1, p2);
-    console.log(currGame);
     formEl.classList.remove('open');
+    renderBoard();
 }
 
 function openPopup() {
@@ -119,9 +129,29 @@ function openPopup() {
     console.log("Clicked New Game")
     formEl.classList.add('open')
 }
+function renderBoard() {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            let cell = document.querySelector(`.cell[data-id="${i}${j}"]`);
+            if (board[i][j] != null) {
+                cell.innerHTML = board[i][j];
+            } else {
+                cell.innerHTML = '';
 
+            }
+        }
+    }
+}
 
-cells.forEach( cell => console.log(cell))
+cells.forEach(cell => cell.addEventListener('click', function () {
+    let cellId = this.getAttribute('data-id')
+    currGame.move(cellId);
+}));
 
 newGameBtnEl.addEventListener('click', openPopup)
 startBtnEl.addEventListener('click', initialize)
+
+
+
+
+//render Board -> done

@@ -31,11 +31,18 @@ body{
 .cell {
     border: 5px solid black;
     flex-basis: 33.3333333333%;
+    min-height: 150px;
+    max-height: 180px;
+    font-size: 5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cell[data-id = "00"] {
-    /* border-top: none;
-    border-left: none; */
+    border-top: none;
+    border-left: none;
 }
 .cell[data-id = "01"] {
     border-top: none;
@@ -117,36 +124,7 @@ body{
 input {
     padding: 5px;
     border: none;
-    font-family: 'Crimson Text'
+    font-family: 'Crimson Text';
+    font-size: 1rem;
 }
 
-.p1-scoreboard {
-    position: absolute;
-    left: 3rem;
-}
-.p2-scoreboard {
-    position: absolute;
-    right: 3rem;
-}
-
-.scoreboard {
-    padding: 1rem;
-    width: 200px;
-    bottom: 40%;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    display: none;
-}
-
-.cell {
-    display: flex;
-    max-height: 180px;
-    justify-content: center;
-    align-items: center;
-    font-size: 3rem;
-    font-family: monospace;
-
-}
