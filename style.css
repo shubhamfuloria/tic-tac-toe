@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Crimson+Text&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -20,24 +20,22 @@ body{
 .game-container{
     width: 80%;
     max-width: 550px;
-    min-height: 450px;
-    height: 60vh;
+    height: 400px;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     margin-top: 1rem;
+    position: relative;
 }
 
 .cell {
     border: 5px solid black;
     flex-basis: 33.3333333333%;
-    min-height: 150px;
-    max-height: 180px;
     font-size: 5rem;
-
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 136px;
 }
 
 .cell[data-id = "00"] {
@@ -74,7 +72,7 @@ body{
     justify-content: space-around;
     width: 500px;
     margin: auto;
-    margin-top: 2rem;
+    margin-top: 1rem;
     padding: 1rem;
 }
 
@@ -128,3 +126,54 @@ input {
     font-size: 1rem;
 }
 
+.notice-board {
+    border: 2px black solid;
+    position: absolute;
+    bottom: 50%;
+    text-align: center;
+    width: 300px;
+    height: 200px;
+    padding: 1rem;
+    font-family: 'monospace';
+    left: 10%;
+    background:rgb(207, 205, 205)
+}
+
+.notice-container {
+    margin: 2rem auto;
+    background-color: azure;
+    max-width: 500px;
+    padding: 10px;
+}
+.notice {
+    text-align: center;
+    font-family: monospace;
+}
+
+
+.player-score {
+    background:rgb(151, 151, 151);
+    position: fixed;
+    bottom: 0;
+    padding: 1rem;
+    text-align: center;
+    height: 200px;
+    width: 200px;
+    left: 50px;
+    transition: 1s transform ease;
+    transform: translateY(100%)
+}
+
+.show-score {
+    transform: translateY(0);
+}
+
+.score-player-1, .score-player-2{
+    margin-top: 2rem;
+    font-size: 2.5rem;
+}
+
+.player-2 {
+    left: unset;
+    right: 50px;
+}
