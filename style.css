@@ -161,7 +161,10 @@ input {
     width: 200px;
     left: 50px;
     transition: 1s transform ease;
-    transform: translateY(100%)
+    transform: translateY(100%);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px
+    
 }
 
 .show-score {
@@ -177,3 +180,4 @@ input {
     left: unset;
     right: 50px;
 }
+
